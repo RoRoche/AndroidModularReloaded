@@ -5,6 +5,7 @@
              tools:context="fr.guddy.android_modular_reloaded.second.FragmentSecond">
 
     <TextView
+        android:id="@+id/FragmentSecond_TextView_Welcome"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"

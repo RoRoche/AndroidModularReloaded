@@ -5,5 +5,5 @@
     <string name="next">Next</string>
 
 
-    <string name="hello_fragment_second">Hello Second</string>
+    <string name="hello_fragment_second">Hello %1$s!\n\n%2$s</string>
 </resources>

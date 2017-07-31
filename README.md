@@ -4,6 +4,7 @@ AndroidModularSample Reloaded
 
 1. Providing Proper Back Navigation: <https://developer.android.com/training/implementing-navigation/temporal.html>
 2. Ease fragment navigation with [FragmentsArgs](https://github.com/sockeqwe/fragmentargs)
+3. Set-up Dagger2 for Android
 
 ## Logo credits
 
