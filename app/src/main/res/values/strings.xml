@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">AndroidModularReloaded</string>
+
+    <string name="hello_fragment_first">Hello First</string>
+    <string name="next">Next</string>
+
+
+    <string name="hello_fragment_second">Hello Second</string>
 </resources>
