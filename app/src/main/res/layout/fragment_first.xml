@@ -1,21 +1,29 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical"
-              tools:context="fr.guddy.android_modular_reloaded.first.FragmentFirst">
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:text="@string/hello_fragment_first"/>
-
-    <Button
-        android:id="@+id/FragmentFirst_Button_Next"
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/FragmentFirst_TextInputLayout_Login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/next"/>
+        android:layout_centerInParent="true"
+        android:layout_margin="16dp">
 
-</LinearLayout>
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/FragmentFirst_EditText_Login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/login"
+            android:maxLines="1"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:id="@+id/FragmentFirst_Button_Start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/FragmentFirst_TextInputLayout_Login"
+        android:layout_centerHorizontal="true"
+        android:text="@string/start"/>
+
+</RelativeLayout>

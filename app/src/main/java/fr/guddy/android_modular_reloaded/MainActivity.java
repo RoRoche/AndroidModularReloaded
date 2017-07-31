@@ -1,5 +1,6 @@
 package fr.guddy.android_modular_reloaded;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -7,21 +8,32 @@ import android.support.v7.app.AppCompatActivity;
 
 import javax.inject.Inject;
 
+import au.com.ds.ef.EasyFlow;
+import au.com.ds.ef.EventEnum;
 import dagger.android.AndroidInjection;
 import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
 import dagger.android.support.HasSupportFragmentInjector;
 import fr.guddy.android_modular_reloaded.first.FragmentFirst;
 import fr.guddy.android_modular_reloaded.first.FragmentFirstBuilder;
+import fr.guddy.android_modular_reloaded.second.FragmentSecond;
 import fr.guddy.android_modular_reloaded.second.FragmentSecondBuilder;
+
+import static au.com.ds.ef.FlowBuilder.from;
+import static au.com.ds.ef.FlowBuilder.on;
 
 public class MainActivity
         extends AppCompatActivity
-        implements FragmentFirst.OnFragmentInteractionListener, HasSupportFragmentInjector {
+        implements HasSupportFragmentInjector {
 
     //region Injected fields
     @Inject
     public DispatchingAndroidInjector<Fragment> supportFragmentInjector;
+    //endregion
+
+    //region Fields
+    private SharedViewModel mSharedViewModel;
+    private EasyFlow<FlowContext> mFlow;
     //endregion
 
     //region Lifecycle
@@ -30,10 +42,38 @@ public class MainActivity
         AndroidInjection.inject(this);
         super.onCreate(pSavedInstanceState);
         setContentView(R.layout.activity_main);
+        mSharedViewModel = ViewModelProviders.of(this).get(SharedViewModel.class);
 
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.ActivityMain_ViewGroup_Container, new FragmentFirstBuilder().build())
-                .commit();
+        mFlow =
+                from(FragmentFirst.States.WAITING_LOGIN).transit(
+                        on(FragmentFirst.Events.loginProvided).to(FragmentSecond.States.SHOWING_WELCOME).transit(
+                                on(Events.backPressed).to(FragmentFirst.States.WAITING_LOGIN)
+                        )
+                );
+
+        mFlow.executor(new UiThreadExecutor());
+
+        mFlow.whenEnter(FragmentFirst.States.WAITING_LOGIN, (final FlowContext poContext) -> {
+            final FragmentManager lFragmentManager = getSupportFragmentManager();
+            if (lFragmentManager.findFragmentById(R.id.ActivityMain_ViewGroup_Container) == null) {
+                lFragmentManager.beginTransaction()
+                        .replace(R.id.ActivityMain_ViewGroup_Container, new FragmentFirstBuilder().build())
+                        .commit();
+            }
+        });
+
+        mFlow.whenEnter(FragmentSecond.States.SHOWING_WELCOME, (final FlowContext poContext) -> {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.ActivityMain_ViewGroup_Container, new FragmentSecondBuilder(FragmentFirst.getLogin(poContext)).build())
+                    .addToBackStack(null)
+                    .commit();
+        });
+
+        mFlow.whenLeave(FragmentSecond.States.SHOWING_WELCOME, (final FlowContext poContext) -> {
+            poContext.args().clear();
+        });
+
+        mFlow.start(mSharedViewModel.getFlowContext());
     }
     //endregion
 
@@ -42,6 +82,7 @@ public class MainActivity
     public void onBackPressed() {
         final FragmentManager lFragmentManager = getSupportFragmentManager();
         if (lFragmentManager.getBackStackEntryCount() > 0) {
+            mSharedViewModel.safeTrigger(Events.backPressed);
             lFragmentManager.popBackStack();
         } else {
             super.onBackPressed();
@@ -49,20 +90,16 @@ public class MainActivity
     }
     //endregion
 
-    //region FragmentFirst.OnFragmentInteractionListener
-    @Override
-    public void onClickNext() {
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.ActivityMain_ViewGroup_Container, new FragmentSecondBuilder("RoRoche").build())
-                .addToBackStack(null)
-                .commit();
-    }
-    //endregion
-
     //region HasSupportFragmentInjector
     @Override
     public AndroidInjector<Fragment> supportFragmentInjector() {
         return supportFragmentInjector;
+    }
+    //endregion
+
+    //region FSM
+    public enum Events implements EventEnum {
+        backPressed
     }
     //endregion
 }

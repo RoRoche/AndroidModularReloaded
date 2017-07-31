@@ -1,8 +1,10 @@
 apply plugin: 'com.android.application'
+apply plugin: 'me.tatarka.retrolambda'
 
 android {
     compileSdkVersion 26
     buildToolsVersion "26.0.0"
+
     defaultConfig {
         applicationId "fr.guddy.android_modular_reloaded"
         minSdkVersion 15
@@ -11,11 +13,17 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
@@ -34,6 +42,7 @@ dependencies {
     compile 'com.android.support:appcompat-v7:26.+'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.android.support:support-v4:26.+'
+    compile 'com.android.support:design:26.+'
 
     compile 'com.hannesdorfmann.fragmentargs:annotation:3.0.2'
     annotationProcessor 'com.hannesdorfmann.fragmentargs:processor:3.0.2'
@@ -45,6 +54,12 @@ dependencies {
     annotationProcessor 'com.google.dagger:dagger-android-processor:2.11'
 
     compile 'com.fernandocejas:arrow:1.0.0'
+
+    compile 'au.com.datasymphony:EasyFlow:1.3.1'
+
+    compile "android.arch.lifecycle:runtime:1.0.0-alpha5"
+    compile "android.arch.lifecycle:extensions:1.0.0-alpha5"
+    annotationProcessor "android.arch.lifecycle:compiler:1.0.0-alpha5"
 
     testCompile 'junit:junit:4.12'
 }

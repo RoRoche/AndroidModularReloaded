@@ -18,6 +18,7 @@ import java.util.Date;
 
 import javax.inject.Inject;
 
+import au.com.ds.ef.StateEnum;
 import dagger.android.support.AndroidSupportInjection;
 import fr.guddy.android_modular_reloaded.R;
 
@@ -59,4 +60,9 @@ public class FragmentSecond extends Fragment {
     }
     //endregion
 
+    //region FSM
+    public enum States implements StateEnum {
+        SHOWING_WELCOME
+    }
+    //endregion
 }
