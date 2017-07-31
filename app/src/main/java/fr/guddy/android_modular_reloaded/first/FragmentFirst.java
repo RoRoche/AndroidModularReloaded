@@ -2,30 +2,22 @@ package fr.guddy.android_modular_reloaded.first;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.hannesdorfmann.fragmentargs.FragmentArgs;
+import com.hannesdorfmann.fragmentargs.annotation.FragmentWithArgs;
+
 import fr.guddy.android_modular_reloaded.R;
 
+@FragmentWithArgs
 public class FragmentFirst extends Fragment {
 
     //region Fields
     private OnFragmentInteractionListener mListener;
-    //endregion
-
-    //region Factory
-    public FragmentFirst() {
-        // Required empty public constructor
-    }
-
-    public static FragmentFirst newInstance() {
-        final FragmentFirst lFragment = new FragmentFirst();
-        final Bundle lArgs = new Bundle();
-        lFragment.setArguments(lArgs);
-        return lFragment;
-    }
     //endregion
 
     //region Lifecycle
@@ -37,6 +29,12 @@ public class FragmentFirst extends Fragment {
         } else {
             throw new RuntimeException(String.format("%s must implement %s", pContext.toString(), OnFragmentInteractionListener.class.getSimpleName()));
         }
+    }
+
+    @Override
+    public void onCreate(@Nullable final Bundle pSavedInstanceState) {
+        super.onCreate(pSavedInstanceState);
+        FragmentArgs.inject(this);
     }
 
     @Override
