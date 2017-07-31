@@ -11,16 +11,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.hannesdorfmann.fragmentargs.FragmentArgs;
-import com.hannesdorfmann.fragmentargs.annotation.FragmentWithArgs;
-
 import au.com.ds.ef.EventEnum;
 import au.com.ds.ef.StateEnum;
-import fr.guddy.android_modular_reloaded.FlowContext;
-import fr.guddy.android_modular_reloaded.R;
-import fr.guddy.android_modular_reloaded.SharedViewModel;
+import fr.guddy.android_modular_reloaded.common.FlowContext;
+import fr.guddy.android_modular_reloaded.common.SharedViewModel;
 
-@FragmentWithArgs
 public class FragmentFirst extends Fragment {
     //region Constants
     private static final String ARG_KEY_LOGIN = "LOGIN";
@@ -34,11 +29,16 @@ public class FragmentFirst extends Fragment {
     private SharedViewModel mSharedViewModel;
     //endregion
 
+    //region Factory
+    public static FragmentFirst newInstance() {
+        return new FragmentFirst();
+    }
+    //endregion
+
     //region Lifecycle
     @Override
     public void onCreate(@Nullable final Bundle pSavedInstanceState) {
         super.onCreate(pSavedInstanceState);
-        FragmentArgs.inject(this);
         mSharedViewModel = ViewModelProviders.of(getActivity()).get(SharedViewModel.class);
     }
 

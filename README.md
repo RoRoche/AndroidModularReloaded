@@ -2,10 +2,23 @@
 
 AndroidModularSample Reloaded
 
+## Goals
+
+- Use native Android SDK as much as possible (Fragment, ViewModel)
+- Support configuration changes
+
+## Opportunities
+
+- [Dagger2 Android support](https://google.github.io/dagger//android.html):
+    - Keep in mind that Android framework classes are instantiated by the OS itself
+    - The type requesting injection doesn't need to know about its injector anymore
+- Android Architecture Components to build _lifecycle-aware_ components
+
+## Steps
+
 1. Providing Proper Back Navigation: <https://developer.android.com/training/implementing-navigation/temporal.html>
-2. Ease fragment navigation with [FragmentsArgs](https://github.com/sockeqwe/fragmentargs)
-3. Set-up Dagger2 for Android
-4. Set-up and share EasyFlow via [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel.html#sharing_data_between_fragments)
+2. Set-up Dagger2 for Android
+3. Set-up and share EasyFlow though [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel.html#sharing_data_between_fragments)
 
 ## Logo credits
 

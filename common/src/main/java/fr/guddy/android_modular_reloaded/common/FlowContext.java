@@ -1,4 +1,4 @@
-package fr.guddy.android_modular_reloaded;
+package fr.guddy.android_modular_reloaded.common;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;

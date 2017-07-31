@@ -14,10 +14,11 @@ import dagger.android.AndroidInjection;
 import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
 import dagger.android.support.HasSupportFragmentInjector;
+import fr.guddy.android_modular_reloaded.common.FlowContext;
+import fr.guddy.android_modular_reloaded.common.SharedViewModel;
+import fr.guddy.android_modular_reloaded.common.UiThreadExecutor;
 import fr.guddy.android_modular_reloaded.first.FragmentFirst;
-import fr.guddy.android_modular_reloaded.first.FragmentFirstBuilder;
 import fr.guddy.android_modular_reloaded.second.FragmentSecond;
-import fr.guddy.android_modular_reloaded.second.FragmentSecondBuilder;
 
 import static au.com.ds.ef.FlowBuilder.from;
 import static au.com.ds.ef.FlowBuilder.on;
@@ -57,14 +58,15 @@ public class MainActivity
             final FragmentManager lFragmentManager = getSupportFragmentManager();
             if (lFragmentManager.findFragmentById(R.id.ActivityMain_ViewGroup_Container) == null) {
                 lFragmentManager.beginTransaction()
-                        .replace(R.id.ActivityMain_ViewGroup_Container, new FragmentFirstBuilder().build())
+                        .replace(R.id.ActivityMain_ViewGroup_Container, FragmentFirst.newInstance())
                         .commit();
             }
         });
 
         mFlow.whenEnter(FragmentSecond.States.SHOWING_WELCOME, (final FlowContext poContext) -> {
+            final String lLogin = FragmentFirst.getLogin(poContext);
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.ActivityMain_ViewGroup_Container, new FragmentSecondBuilder(FragmentFirst.getLogin(poContext)).build())
+                    .replace(R.id.ActivityMain_ViewGroup_Container, FragmentSecond.newInstance(lLogin))
                     .addToBackStack(null)
                     .commit();
         });
