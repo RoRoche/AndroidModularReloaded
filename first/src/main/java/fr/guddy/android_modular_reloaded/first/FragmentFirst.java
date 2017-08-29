@@ -55,11 +55,11 @@ public class FragmentFirst extends Fragment {
 
     //region User interaction
     private void onClickButtonStart() {
-        final String lsLogin = mEditTextLogin.getText().toString();
-        if (TextUtils.isEmpty(lsLogin)) {
+        final String lLogin = mEditTextLogin.getText().toString();
+        if (TextUtils.isEmpty(lLogin)) {
             mEditTextLogin.setError(getString(R.string.login_error));
         } else {
-            mSharedViewModel.putArgString(ARG_KEY_LOGIN, lsLogin);
+            mSharedViewModel.putArgString(ARG_KEY_LOGIN, lLogin);
             mSharedViewModel.safeTrigger(Events.loginProvided);
         }
     }
@@ -74,8 +74,12 @@ public class FragmentFirst extends Fragment {
         loginProvided
     }
 
-    public static String getLogin(@NonNull final FlowContext poFlowContext) {
-        return poFlowContext.args().getString(ARG_KEY_LOGIN);
+    public static void putLogin(@NonNull final FlowContext pFlowContext, final String pLogin) {
+        pFlowContext.args().putString(ARG_KEY_LOGIN, pLogin);
+    }
+
+    public static String getLogin(@NonNull final FlowContext pFlowContext) {
+        return pFlowContext.args().getString(ARG_KEY_LOGIN);
     }
     //endregion
 }

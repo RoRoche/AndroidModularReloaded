@@ -1,10 +1,11 @@
 package fr.guddy.android_modular_reloaded;
 
+import android.arch.lifecycle.LifecycleActivity;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v7.app.AppCompatActivity;
 
 import javax.inject.Inject;
 
@@ -24,7 +25,7 @@ import static au.com.ds.ef.FlowBuilder.from;
 import static au.com.ds.ef.FlowBuilder.on;
 
 public class MainActivity
-        extends AppCompatActivity
+        extends LifecycleActivity
         implements HasSupportFragmentInjector {
 
     //region Injected fields
@@ -54,7 +55,7 @@ public class MainActivity
 
         mFlow.executor(new UiThreadExecutor());
 
-        mFlow.whenEnter(FragmentFirst.States.WAITING_LOGIN, (final FlowContext poContext) -> {
+        mFlow.whenEnter(FragmentFirst.States.WAITING_LOGIN, (@NonNull final FlowContext poContext) -> {
             final FragmentManager lFragmentManager = getSupportFragmentManager();
             if (lFragmentManager.findFragmentById(R.id.ActivityMain_ViewGroup_Container) == null) {
                 lFragmentManager.beginTransaction()
@@ -63,7 +64,7 @@ public class MainActivity
             }
         });
 
-        mFlow.whenEnter(FragmentSecond.States.SHOWING_WELCOME, (final FlowContext poContext) -> {
+        mFlow.whenEnter(FragmentSecond.States.SHOWING_WELCOME, (@NonNull final FlowContext poContext) -> {
             final String lLogin = FragmentFirst.getLogin(poContext);
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.ActivityMain_ViewGroup_Container, FragmentSecond.newInstance(lLogin))
@@ -71,11 +72,10 @@ public class MainActivity
                     .commit();
         });
 
-        mFlow.whenLeave(FragmentSecond.States.SHOWING_WELCOME, (final FlowContext poContext) -> {
-            poContext.args().clear();
-        });
+        mFlow.whenLeave(FragmentSecond.States.SHOWING_WELCOME, (@NonNull final FlowContext poContext) -> poContext.args().clear());
 
-        mFlow.start(mSharedViewModel.getFlowContext());
+        mSharedViewModel.getFlowContext()
+                .observe(this, (@NonNull final FlowContext pContext) -> mFlow.start(true, pContext));
     }
     //endregion
 
