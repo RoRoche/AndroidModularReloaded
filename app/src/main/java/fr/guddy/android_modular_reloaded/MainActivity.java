@@ -74,8 +74,12 @@ public class MainActivity
 
         mFlow.whenLeave(FragmentSecond.States.SHOWING_WELCOME, (@NonNull final FlowContext poContext) -> poContext.args().clear());
 
-        mSharedViewModel.getFlowContext()
-                .observe(this, (@NonNull final FlowContext pContext) -> mFlow.start(true, pContext));
+        mSharedViewModel.getFlowContextLiveData()
+                .observe(
+                        this,
+                        (@NonNull final SharedViewModel.LiveDataFlowContext pLiveDataFlowContext) ->
+                                mFlow.start(pLiveDataFlowContext.forceEnterInitialState, pLiveDataFlowContext.flowContext)
+                );
     }
     //endregion
 
