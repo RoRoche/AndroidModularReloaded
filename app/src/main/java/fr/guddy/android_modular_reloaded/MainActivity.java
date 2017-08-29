@@ -104,7 +104,7 @@ public class MainActivity
     //endregion
 
     //region FSM
-    public enum Events implements EventEnum {
+    private enum Events implements EventEnum {
         backPressed
     }
     //endregion
