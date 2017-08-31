@@ -15,6 +15,7 @@
     - Keep in mind that Android framework classes are instantiated by the OS itself
     - The type requesting injection doesn't need to know about its injector anymore
 - Android Architecture Components to build _lifecycle-aware_ components
+- Unit test `Fragment`(s) from modules with the convenient [FragmentTestRule](https://github.com/21Buttons/FragmentTestRule) library
 
 ## Steps
 

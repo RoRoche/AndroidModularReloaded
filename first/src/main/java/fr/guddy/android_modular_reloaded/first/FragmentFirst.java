@@ -18,6 +18,7 @@ import fr.guddy.android_modular_reloaded.common.SharedViewModel;
 
 public class FragmentFirst extends Fragment {
     //region Constants
+    private static final String ARG_KEY_PRE_FILLED_LOGIN = "PRE_FILLED_LOGIN";
     private static final String ARG_KEY_LOGIN = "LOGIN";
     //endregion
 
@@ -30,8 +31,18 @@ public class FragmentFirst extends Fragment {
     //endregion
 
     //region Factory
+    public static FragmentFirst newInstance(@NonNull final String pPrefilledLogin) {
+        final FragmentFirst lFragmentFirst = new FragmentFirst();
+
+        final Bundle lArgs = new Bundle();
+        lArgs.putString(ARG_KEY_PRE_FILLED_LOGIN, pPrefilledLogin);
+        lFragmentFirst.setArguments(lArgs);
+
+        return lFragmentFirst;
+    }
+
     public static FragmentFirst newInstance() {
-        return new FragmentFirst();
+        return newInstance("");
     }
     //endregion
 
@@ -48,6 +59,7 @@ public class FragmentFirst extends Fragment {
                              final Bundle pSavedInstanceState) {
         final View lRootView = lInflater.inflate(R.layout.fragment_first, pContainer, false);
         mEditTextLogin = lRootView.findViewById(R.id.FragmentFirst_EditText_Login);
+        mEditTextLogin.setText(getArguments().getString(ARG_KEY_PRE_FILLED_LOGIN));
         lRootView.findViewById(R.id.FragmentFirst_Button_Start).setOnClickListener((final View poView) -> onClickButtonStart());
         return lRootView;
     }
