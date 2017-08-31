@@ -8,7 +8,7 @@ import dagger.Module;
 import dagger.Provides;
 import fr.guddy.android_modular_reloaded.App;
 
-@Module(subcomponents = ComponentMainActivity.class)
+@Module
 public class ModuleApp {
     //region Field
     private final App mApp;
