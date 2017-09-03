@@ -22,7 +22,7 @@ public interface ComponentApp {
         @BindsInstance
         Builder application(final App pApp);
 
-        Builder setModuleApp(final ModuleApp pModuleApp);
+        Builder moduleApp(final ModuleApp pModuleApp);
 
         ComponentApp build();
     }
