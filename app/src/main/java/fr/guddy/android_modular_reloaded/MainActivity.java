@@ -19,6 +19,7 @@ import fr.guddy.android_modular_reloaded.common.FlowContext;
 import fr.guddy.android_modular_reloaded.common.SharedViewModel;
 import fr.guddy.android_modular_reloaded.common.UiThreadExecutor;
 import fr.guddy.android_modular_reloaded.first.FragmentFirst;
+import fr.guddy.android_modular_reloaded.first.FragmentFirstOutput;
 import fr.guddy.android_modular_reloaded.second.FragmentSecond;
 
 import static au.com.ds.ef.FlowBuilder.from;
@@ -55,7 +56,7 @@ public class MainActivity
 
         mFlow.executor(new UiThreadExecutor());
 
-        mFlow.whenEnter(FragmentFirst.States.WAITING_LOGIN, (@NonNull final FlowContext poContext) -> {
+        mFlow.whenEnter(FragmentFirst.States.WAITING_LOGIN, (@NonNull final FlowContext pContext) -> {
             final FragmentManager lFragmentManager = getSupportFragmentManager();
             if (lFragmentManager.findFragmentById(R.id.ActivityMain_ViewGroup_Container) == null) {
                 lFragmentManager.beginTransaction()
@@ -64,15 +65,15 @@ public class MainActivity
             }
         });
 
-        mFlow.whenEnter(FragmentSecond.States.SHOWING_WELCOME, (@NonNull final FlowContext poContext) -> {
-            final String lLogin = FragmentFirst.getLogin(poContext);
+        mFlow.whenEnter(FragmentSecond.States.SHOWING_WELCOME, (@NonNull final FlowContext pContext) -> {
+            final String lLogin = new FragmentFirstOutput(pContext.args()).login;
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.ActivityMain_ViewGroup_Container, FragmentSecond.newInstance(lLogin))
                     .addToBackStack(null)
                     .commit();
         });
 
-        mFlow.whenLeave(FragmentSecond.States.SHOWING_WELCOME, (@NonNull final FlowContext poContext) -> poContext.args().clear());
+        mFlow.whenLeave(FragmentSecond.States.SHOWING_WELCOME, (@NonNull final FlowContext pContext) -> pContext.args().clear());
 
         mSharedViewModel.getFlowContextLiveData()
                 .observe(

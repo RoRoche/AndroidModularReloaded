@@ -13,13 +13,11 @@ import android.view.ViewGroup;
 
 import au.com.ds.ef.EventEnum;
 import au.com.ds.ef.StateEnum;
-import fr.guddy.android_modular_reloaded.common.FlowContext;
 import fr.guddy.android_modular_reloaded.common.SharedViewModel;
 
 public class FragmentFirst extends Fragment {
     //region Constants
     private static final String ARG_KEY_PRE_FILLED_LOGIN = "PRE_FILLED_LOGIN";
-    private static final String ARG_KEY_LOGIN = "LOGIN";
     //endregion
 
     //region Bound views
@@ -71,7 +69,7 @@ public class FragmentFirst extends Fragment {
         if (TextUtils.isEmpty(lLogin)) {
             mEditTextLogin.setError(getString(R.string.login_error));
         } else {
-            mSharedViewModel.putArgString(ARG_KEY_LOGIN, lLogin);
+            new FragmentFirstOutput(lLogin).putArgs(mSharedViewModel.args());
             mSharedViewModel.safeTrigger(Events.loginProvided);
         }
     }
@@ -84,14 +82,6 @@ public class FragmentFirst extends Fragment {
 
     public enum Events implements EventEnum {
         loginProvided
-    }
-
-    public static void putLogin(@NonNull final FlowContext pFlowContext, final String pLogin) {
-        pFlowContext.args().putString(ARG_KEY_LOGIN, pLogin);
-    }
-
-    public static String getLogin(@NonNull final FlowContext pFlowContext) {
-        return pFlowContext.args().getString(ARG_KEY_LOGIN);
     }
     //endregion
 }
