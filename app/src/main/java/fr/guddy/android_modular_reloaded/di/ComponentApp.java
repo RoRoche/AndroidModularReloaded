@@ -6,15 +6,13 @@ import dagger.BindsInstance;
 import dagger.Component;
 import dagger.android.support.AndroidSupportInjectionModule;
 import fr.guddy.android_modular_reloaded.App;
-import fr.guddy.android_modular_reloaded.second.di.ModuleFragmentSecond;
 
 @Singleton
 @Component(modules = {
         AndroidSupportInjectionModule.class,
         ModuleApp.class,
-        ActivityBuilder.class,
         ModuleMainActivity.class,
-        ModuleFragmentSecond.class
+        ActivityBindingModule.class,
 })
 public interface ComponentApp {
     @Component.Builder
@@ -23,6 +21,8 @@ public interface ComponentApp {
         Builder application(final App pApp);
 
         Builder moduleApp(final ModuleApp pModuleApp);
+
+        Builder moduleMainActivity(final ModuleMainActivity pModuleMainActivity);
 
         ComponentApp build();
     }

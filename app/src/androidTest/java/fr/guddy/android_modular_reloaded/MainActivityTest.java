@@ -34,8 +34,8 @@ public class MainActivityTest {
     //region Rules
     @Rule
     public ActivityTestRule<MainActivity> activityRule = new ActivityTestRule<>(MainActivity.class, false, false);
-//    @Rule
-//    public AppTestRule mRule = new AppTestRule();
+    @Rule
+    public AppTestRule mRule = new AppTestRule();
     //endregion
 
     //region Mocks
@@ -47,7 +47,7 @@ public class MainActivityTest {
     @Test
     public void when_typing_a_login_and_clicking_on_start_it_displays_the_filled_login() {
         // given
-//        when(mDateFormatter.format(any())).thenReturn("test_date");
+        when(mDateFormatter.format(any())).thenReturn("test_date");
         activityRule.launchActivity(null);
         onView(withId(R.id.FragmentFirst_EditText_Login)).perform(typeText("test_login")).perform(closeSoftKeyboard());
 
@@ -56,13 +56,13 @@ public class MainActivityTest {
 
         // then
         onView(withId(R.id.FragmentSecond_TextView_Welcome)).check(matches(withText(containsString("test_login"))));
-//        onView(withId(R.id.FragmentSecond_TextView_Welcome)).check(matches(withText(containsString("test_date"))));
+        onView(withId(R.id.FragmentSecond_TextView_Welcome)).check(matches(withText(containsString("test_date"))));
     }
 
     @Test
     public void when_going_directly_to_second_state_with_filled_login_it_displays_this_login() throws InterruptedException {
         // given
-//        when(mDateFormatter.format(any())).thenReturn("test_date");
+        when(mDateFormatter.format(any())).thenReturn("test_date");
         activityRule.launchActivity(null);
         final SharedViewModel lSharedViewModel = ViewModelProviders.of(activityRule.getActivity()).get(SharedViewModel.class);
         final FlowContext lFlowContext = new FlowContext();
@@ -74,7 +74,7 @@ public class MainActivityTest {
 
         // then
         onView(withId(R.id.FragmentSecond_TextView_Welcome)).check(matches(withText(containsString("test_login"))));
-//        onView(withId(R.id.FragmentSecond_TextView_Welcome)).check(matches(withText(containsString("test_date"))));
+        onView(withId(R.id.FragmentSecond_TextView_Welcome)).check(matches(withText(containsString("test_date"))));
     }
     //endregion
 
