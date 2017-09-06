@@ -25,7 +25,6 @@ import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
-import static org.hamcrest.Matchers.containsString;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
@@ -49,14 +48,20 @@ public class MainActivityTest {
         // given
         when(mDateFormatter.format(any())).thenReturn("test_date");
         activityRule.launchActivity(null);
-        onView(withId(R.id.FragmentFirst_EditText_Login)).perform(typeText("test_login")).perform(closeSoftKeyboard());
 
         // when
-        onView(withId(R.id.FragmentFirst_Button_Start)).perform(click());
+        onView(withId(R.id.FragmentFirst_EditText_Login))
+                .perform(typeText("test_login"))
+                .perform(closeSoftKeyboard());
+        onView(withId(R.id.FragmentFirst_Button_Start))
+                .perform(click());
 
         // then
-        onView(withId(R.id.FragmentSecond_TextView_Welcome)).check(matches(withText(containsString("test_login"))));
-        onView(withId(R.id.FragmentSecond_TextView_Welcome)).check(matches(withText(containsString("test_date"))));
+        onView(withId(R.id.FragmentSecond_TextView_Welcome)).check(
+                matches(
+                        withText("Hello test_login!\n\ntest_date")
+                )
+        );
     }
 
     @Test
@@ -73,8 +78,11 @@ public class MainActivityTest {
         whenSettingFlowContext(lSharedViewModel, lFlowContext);
 
         // then
-        onView(withId(R.id.FragmentSecond_TextView_Welcome)).check(matches(withText(containsString("test_login"))));
-        onView(withId(R.id.FragmentSecond_TextView_Welcome)).check(matches(withText(containsString("test_date"))));
+        onView(withId(R.id.FragmentSecond_TextView_Welcome)).check(
+                matches(
+                        withText("Hello test_login!\n\ntest_date")
+                )
+        );
     }
     //endregion
 
