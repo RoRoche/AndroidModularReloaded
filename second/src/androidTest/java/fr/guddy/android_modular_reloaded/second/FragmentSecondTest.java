@@ -13,7 +13,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.withText;
 public class FragmentSecondTest {
     @Rule
     public FragmentTestRule<DebugActivity, FragmentSecond> fragmentTestRule =
-            new FragmentTestRule<>(DebugActivity.class, FragmentSecond.class);
+            new FragmentTestRule<>(DebugActivity.class, FragmentSecond.class, false ,false);
 
     @Test
     public void it_displays_prefilled_login() {
@@ -21,6 +21,7 @@ public class FragmentSecondTest {
         final FragmentSecond lFragmentSecond = FragmentSecond.newInstance("test_login");
 
         // when
+        fragmentTestRule.launchActivity(null);
         fragmentTestRule.launchFragment(lFragmentSecond);
 
         // then
