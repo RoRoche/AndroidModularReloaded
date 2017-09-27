@@ -9,7 +9,7 @@ public class ModuleDebugActivity {
     //region Provides
     @Provides
     public IDateFormatter providesDateFormatter() {
-        return new MockDateFormatter();
+        return null;
     }
     //endregion
 }

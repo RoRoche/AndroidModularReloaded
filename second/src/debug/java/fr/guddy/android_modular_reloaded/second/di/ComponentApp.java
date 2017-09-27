@@ -22,7 +22,7 @@ public interface ComponentApp {
 
         Builder moduleApp(final ModuleApp pModuleApp);
 
-        Builder moduleMainActivity(final ModuleDebugActivity pModuleMainActivity);
+        Builder moduleDebugActivity(final ModuleDebugActivity pModuleDebugActivity);
 
         ComponentApp build();
     }
