@@ -5,7 +5,7 @@ import javax.inject.Singleton;
 import dagger.BindsInstance;
 import dagger.Component;
 import dagger.android.support.AndroidSupportInjectionModule;
-import fr.guddy.android_modular_reloaded.second.App;
+import fr.guddy.android_modular_reloaded.second.DebugApp;
 
 @Singleton
 @Component(modules = {
@@ -13,16 +13,16 @@ import fr.guddy.android_modular_reloaded.second.App;
         ModuleDebugActivity.class,
         ActivityBindingModule.class,
 })
-public interface ComponentApp {
+public interface ComponentDebugApp {
     @Component.Builder
     interface Builder {
         @BindsInstance
-        Builder application(final App pApp);
+        Builder application(final DebugApp pDebugApp);
 
         Builder moduleDebugActivity(final ModuleDebugActivity pModuleDebugActivity);
 
-        ComponentApp build();
+        ComponentDebugApp build();
     }
 
-    void inject(final App pApp);
+    void inject(final DebugApp pApp);
 }

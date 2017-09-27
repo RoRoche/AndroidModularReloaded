@@ -1,4 +1,4 @@
-package fr.guddy.android_modular_reloaded.second;
+package fr.guddy.android_modular_reloaded.debugutils;
 
 import android.app.Activity;
 import android.support.multidex.MultiDexApplication;
@@ -8,9 +8,8 @@ import javax.inject.Inject;
 import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
 import dagger.android.HasActivityInjector;
-import fr.guddy.android_modular_reloaded.second.di.DaggerComponentApp;
 
-public class App extends MultiDexApplication implements HasActivityInjector {
+public abstract class AbstractDebugApp extends MultiDexApplication implements HasActivityInjector {
 
     //region Injected fields
     @Inject
@@ -21,11 +20,12 @@ public class App extends MultiDexApplication implements HasActivityInjector {
     @Override
     public void onCreate() {
         super.onCreate();
-        DaggerComponentApp.builder()
-                .application(this)
-                .build()
-                .inject(this);
+        buildComponentAndInjectThis();
     }
+    //endregion
+
+    //region Method to implement
+    protected abstract void buildComponentAndInjectThis();
     //endregion
 
     //region HasActivityInjector

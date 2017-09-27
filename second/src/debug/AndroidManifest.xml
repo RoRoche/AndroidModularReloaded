@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application
-        android:name="fr.guddy.android_modular_reloaded.second.App"
+        android:name="fr.guddy.android_modular_reloaded.second.DebugApp"
         android:theme="@style/Theme.AppCompat.Light">
     </application>
 </manifest>
