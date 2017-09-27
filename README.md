@@ -15,7 +15,7 @@
     - Keep in mind that Android framework classes are instantiated by the OS itself
     - The type requesting injection doesn't need to know about its injector anymore
 - Android Architecture Components to build _lifecycle-aware_ components
-- Unit test `Fragment`(s) from modules with the convenient [FragmentTestRule](https://github.com/21Buttons/FragmentTestRule) library
+- Unit test `Fragment`(s) from modules with the convenient [DaggerMock](https://github.com/fabioCollini/DaggerMock/) and [FragmentTestRule](https://github.com/21Buttons/FragmentTestRule) libraries
 
 ## Steps
 
@@ -25,4 +25,4 @@
 
 ## Logo credits
 
-Arrows graphic by <a href="http://www.flaticon.com/authors/roundicons">roundicons</a> from <a href="http://www.flaticon.com/">Flaticon</a> is licensed under <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a>. Check out the new logo that I created on <a href="http://logomakr.com" title="Logo Maker">LogoMaker.com</a> https://logomakr.com/6joyCt6joyCt
+Arrows graphic by <a href="http://www.flaticon.com/authors/roundicons">roundicons</a> from <a href="http://www.flaticon.com/">Flaticon</a> is licensed under <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a>. Check out the new logo that I created on <a href="http://logomakr.com" title="Logo Maker">LogoMaker.com</a>
