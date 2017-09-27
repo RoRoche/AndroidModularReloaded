@@ -7,7 +7,7 @@ import dagger.Module;
 import dagger.android.ActivityKey;
 import dagger.android.AndroidInjector;
 import dagger.multibindings.IntoMap;
-import fr.guddy.android_modular_reloaded.second.DebugActivity;
+import fr.guddy.android_modular_reloaded.debugutils.DebugActivity;
 
 @Module(subcomponents = {
         ComponentDebugActivity.class

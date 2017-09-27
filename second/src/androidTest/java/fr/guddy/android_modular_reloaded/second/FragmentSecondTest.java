@@ -6,6 +6,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.mockito.Mock;
 
+import fr.guddy.android_modular_reloaded.debugutils.DebugActivity;
 import fr.guddy.android_modular_reloaded.second.rules.AppTestRule;
 
 import static android.support.test.espresso.Espresso.onView;

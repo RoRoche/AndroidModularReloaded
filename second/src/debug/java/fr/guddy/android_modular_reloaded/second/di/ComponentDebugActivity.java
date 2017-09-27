@@ -2,7 +2,7 @@ package fr.guddy.android_modular_reloaded.second.di;
 
 import dagger.Subcomponent;
 import dagger.android.AndroidInjector;
-import fr.guddy.android_modular_reloaded.second.DebugActivity;
+import fr.guddy.android_modular_reloaded.debugutils.DebugActivity;
 
 @Subcomponent(modules = {
         ModuleDebugActivity.class,

@@ -3,6 +3,5 @@
     <application
         android:name="fr.guddy.android_modular_reloaded.second.App"
         android:theme="@style/Theme.AppCompat.Light">
-        <activity android:name="fr.guddy.android_modular_reloaded.second.DebugActivity"/>
     </application>
 </manifest>

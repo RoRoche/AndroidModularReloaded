@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/AndroidModularReloaded.iml" filepath="$PROJECT_DIR$/AndroidModularReloaded.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/common/common.iml" filepath="$PROJECT_DIR$/common/common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/debugutils/debugutils.iml" filepath="$PROJECT_DIR$/debugutils/debugutils.iml" />
       <module fileurl="file://$PROJECT_DIR$/first/first.iml" filepath="$PROJECT_DIR$/first/first.iml" />
       <module fileurl="file://$PROJECT_DIR$/second/second.iml" filepath="$PROJECT_DIR$/second/second.iml" />
     </modules>

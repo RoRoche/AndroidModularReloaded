@@ -1,9 +1,8 @@
-package fr.guddy.android_modular_reloaded.second;
+package fr.guddy.android_modular_reloaded.debugutils;
 
 import android.arch.lifecycle.LifecycleActivity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 
 import javax.inject.Inject;
 
