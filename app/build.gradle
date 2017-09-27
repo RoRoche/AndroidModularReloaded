@@ -39,7 +39,7 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
         exclude group: 'com.google.code.findbugs', module: 'jsr305'
     })
-    androidTestCompile 'com.github.fabioCollini:DaggerMock:0.7.1-beta1'
+    androidTestCompile 'com.github.fabioCollini:DaggerMock:0.8.1'
     androidTestCompile 'org.mockito:mockito-core:2.9.0'
     androidTestCompile 'org.mockito:mockito-android:2.9.0'
 
