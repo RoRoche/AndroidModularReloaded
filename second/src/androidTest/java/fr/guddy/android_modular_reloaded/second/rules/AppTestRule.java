@@ -6,8 +6,9 @@ import fr.guddy.android_modular_reloaded.second.App;
 import fr.guddy.android_modular_reloaded.second.di.ComponentApp;
 import fr.guddy.android_modular_reloaded.second.di.ModuleApp;
 import fr.guddy.android_modular_reloaded.second.di.ModuleDebugActivity;
+import it.cosenonjaviste.daggermock.DaggerMockRule;
 
-public class AppTestRule {}/*extends DaggerMockRule<ComponentApp> {
+public class AppTestRule extends DaggerMockRule<ComponentApp> {
     //region Constructor
     public AppTestRule() {
         super(ComponentApp.class, new ModuleApp(getApp()), new ModuleDebugActivity());
@@ -28,4 +29,4 @@ public class AppTestRule {}/*extends DaggerMockRule<ComponentApp> {
         return (App) InstrumentationRegistry.getInstrumentation().getTargetContext().getApplicationContext();
     }
     //endregion
-}*/
+}

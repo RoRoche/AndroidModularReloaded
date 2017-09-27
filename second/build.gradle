@@ -12,6 +12,8 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        multiDexEnabled true
     }
 
     buildTypes {
@@ -38,10 +40,11 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-//    androidTestCompile 'com.github.fabioCollini:DaggerMock:0.8.1'
+    androidTestCompile 'com.github.fabioCollini:DaggerMock:0.8.1'
     androidTestCompile 'com.21buttons:fragment-test-rule:1.0.0'
 
     compile 'com.android.support:appcompat-v7:26.+'
+    compile 'com.android.support:multidex:1.0.1'
 
     testCompile 'junit:junit:4.12'
 

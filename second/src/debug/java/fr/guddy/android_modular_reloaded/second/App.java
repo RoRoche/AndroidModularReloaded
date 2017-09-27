@@ -1,7 +1,7 @@
 package fr.guddy.android_modular_reloaded.second;
 
 import android.app.Activity;
-import android.app.Application;
+import android.support.multidex.MultiDexApplication;
 
 import javax.inject.Inject;
 
@@ -12,7 +12,7 @@ import fr.guddy.android_modular_reloaded.second.di.ComponentApp;
 import fr.guddy.android_modular_reloaded.second.di.DaggerComponentApp;
 import fr.guddy.android_modular_reloaded.second.di.ModuleApp;
 
-public class App extends Application implements HasActivityInjector {
+public class App extends MultiDexApplication implements HasActivityInjector {
 
     //region Injected fields
     @Inject

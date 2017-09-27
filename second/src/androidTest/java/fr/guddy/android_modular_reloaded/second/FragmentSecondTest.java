@@ -11,10 +11,13 @@ import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 
 public class FragmentSecondTest {
+    //region Rules
     @Rule
     public FragmentTestRule<DebugActivity, FragmentSecond> fragmentTestRule =
             new FragmentTestRule<>(DebugActivity.class, FragmentSecond.class, false ,false);
+    //endregion
 
+    //region Test methods
     @Test
     public void it_displays_prefilled_login() {
         // given
@@ -31,4 +34,5 @@ public class FragmentSecondTest {
                 )
         );
     }
+    //endregion
 }
