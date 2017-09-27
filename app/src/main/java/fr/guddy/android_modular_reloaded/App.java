@@ -18,6 +18,9 @@ public class App extends Application implements HasActivityInjector {
     //region Injected fields
     @Inject
     public DispatchingAndroidInjector<Activity> dispatchingActivityInjector;
+    //endregion
+
+    //region Fields
     private ComponentApp mComponentApp;
     //endregion
 
