@@ -10,7 +10,6 @@ import dagger.android.DispatchingAndroidInjector;
 import dagger.android.HasActivityInjector;
 import fr.guddy.android_modular_reloaded.second.di.ComponentApp;
 import fr.guddy.android_modular_reloaded.second.di.DaggerComponentApp;
-import fr.guddy.android_modular_reloaded.second.di.ModuleApp;
 
 public class App extends MultiDexApplication implements HasActivityInjector {
 
@@ -36,7 +35,6 @@ public class App extends MultiDexApplication implements HasActivityInjector {
     private void buildComponent() {
         mComponentApp = DaggerComponentApp.builder()
                 .application(this)
-                .moduleApp(new ModuleApp(this))
                 .build();
     }
     //endregion

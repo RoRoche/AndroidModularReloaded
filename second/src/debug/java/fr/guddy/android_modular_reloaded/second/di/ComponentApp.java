@@ -10,7 +10,6 @@ import fr.guddy.android_modular_reloaded.second.App;
 @Singleton
 @Component(modules = {
         AndroidSupportInjectionModule.class,
-        ModuleApp.class,
         ModuleDebugActivity.class,
         ActivityBindingModule.class,
 })
@@ -19,8 +18,6 @@ public interface ComponentApp {
     interface Builder {
         @BindsInstance
         Builder application(final App pApp);
-
-        Builder moduleApp(final ModuleApp pModuleApp);
 
         Builder moduleDebugActivity(final ModuleDebugActivity pModuleDebugActivity);
 
