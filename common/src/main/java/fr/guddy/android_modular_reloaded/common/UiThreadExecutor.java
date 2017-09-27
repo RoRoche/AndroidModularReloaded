@@ -12,7 +12,7 @@ public class UiThreadExecutor implements java.util.concurrent.Executor {
 
     //region Executor
     @Override
-    public void execute(final Runnable poCommand) {
+    public void execute(@NonNull final Runnable poCommand) {
         mHandler.post(poCommand);
     }
     //endregion

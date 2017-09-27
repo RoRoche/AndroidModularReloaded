@@ -1,8 +1,8 @@
 package fr.guddy.android_modular_reloaded.debugutils;
 
-import android.arch.lifecycle.LifecycleActivity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 
 import javax.inject.Inject;
 
@@ -11,7 +11,7 @@ import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
 import dagger.android.support.HasSupportFragmentInjector;
 
-public class DebugActivity extends LifecycleActivity implements HasSupportFragmentInjector {
+public class DebugActivity extends AppCompatActivity implements HasSupportFragmentInjector {
 
     //region Injected fields
     @Inject

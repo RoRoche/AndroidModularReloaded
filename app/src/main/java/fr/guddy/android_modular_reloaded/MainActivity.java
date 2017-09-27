@@ -1,11 +1,11 @@
 package fr.guddy.android_modular_reloaded;
 
-import android.arch.lifecycle.LifecycleActivity;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AppCompatActivity;
 
 import javax.inject.Inject;
 
@@ -26,7 +26,7 @@ import static au.com.ds.ef.FlowBuilder.from;
 import static au.com.ds.ef.FlowBuilder.on;
 
 public class MainActivity
-        extends LifecycleActivity
+        extends AppCompatActivity
         implements HasSupportFragmentInjector {
 
     //region Injected fields

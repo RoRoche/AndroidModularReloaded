@@ -29,7 +29,5 @@ dependencies {
 
     compile 'com.android.support:appcompat-v7:26.+'
 
-    compile project(':common')
-
     testCompile 'junit:junit:4.12'
 }
