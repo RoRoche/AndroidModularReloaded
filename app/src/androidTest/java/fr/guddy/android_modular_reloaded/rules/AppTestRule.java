@@ -18,9 +18,9 @@ public class AppTestRule extends DaggerMockRule<ComponentApp> {
                 return pBuilder.application(getApp());
             }
         });
-        set((final ComponentApp pComponent) -> {
-            pComponent.inject(getApp());
-        });
+        set((final ComponentApp pComponent) ->
+            pComponent.inject(getApp())
+        );
     }
     //endregion
 
