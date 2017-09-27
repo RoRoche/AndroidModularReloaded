@@ -12,7 +12,6 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
     }
 
     buildTypes {
@@ -28,12 +27,19 @@ android {
     }
 }
 
+repositories {
+    jcenter()
+    maven { url "https://jitpack.io" }
+}
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+//    androidTestCompile 'com.github.fabioCollini:DaggerMock:0.8.1'
+    androidTestCompile 'com.21buttons:fragment-test-rule:1.0.0'
 
     compile 'com.android.support:appcompat-v7:26.+'
 
