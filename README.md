@@ -2,6 +2,8 @@
 
 [AndroidModularSample](https://github.com/RoRoche/AndroidModularSample) reloaded!
 
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-AndroidModularReloaded-brightgreen.svg?style=flat)](https://android-arsenal.com/details/3/6337)
+
 ![logo](https://raw.githubusercontent.com/RoRoche/AndroidModularReloaded/master/assets/logo.png)
 
 ## Goals
